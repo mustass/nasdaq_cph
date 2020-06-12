@@ -1,11 +1,11 @@
-import get_started as tk
+import get_NASDAQCPH_tikers as tk
 import pandas as pd 
 import numpy as np
 from fuzzywuzzy import process
 
 def match_cvrs():
     tickers = tk.get_tickers()
-    data_file = 'CVR.xlsx'
+    data_file = 'Virk_CVRS/CVR.xlsx'
 
     CVR = pd.read_excel(data_file,
     sheet_name=0,
@@ -28,5 +28,5 @@ def match_cvrs():
     tickers['CVR']= np.asarray(CVRs_list)
     tickers = tickers.drop(['Fact Sheet'],axis = 1)
     #print(tickers.head())
-    tickers.to_csv('tickers_w_cvr.csv')
+    tickers.to_csv('output_data/tickers_w_cvr.csv')
     return tickers
