@@ -6,5 +6,6 @@ import Financial_data_class as fdc
 
 Finance =fdc.financialMeasures()
 
-#print(Finance.log_returns)
-print(Finance.to_monthly(Finance.returns))
+#print(Finance.log_returns)w        
+#print(Finance.to_monthly(Finance.returns,'avg'))
+print(Finance.create_grand_table())

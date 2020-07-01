@@ -22,11 +22,11 @@ def match_cvrs():
         #Ratios = process.extract(ToMatch,strOptions)
         match = process.extractOne(ToMatch,strOptions)
         cvrnr = CVR['CVR-nummer'][CVR['Navn']==str(match[0])].values.item()
-        
-        #print(str(tickers.iloc[company]['Name'])+ str(' has CVR : ')+ str(cvrnr))
         CVRs_list.append(cvrnr)
     tickers['CVR']= np.asarray(CVRs_list)
     tickers = tickers.drop(['Fact Sheet'],axis = 1)
-    #print(tickers.head())
+    for i in range(len(tickers['Symbol'])):
+        string = str(tickers['Symbol'][i])+'.CO'
+        tickers['Symbol'][i] = string.replace(' ', '-')
     tickers.to_csv('output_data/tickers_w_cvr.csv')
     return tickers
